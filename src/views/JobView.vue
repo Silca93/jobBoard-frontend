@@ -5,6 +5,7 @@ import {reactive, ref, onMounted} from 'vue'
 import { useRoute, RouterLink, useRouter} from 'vue-router'
 import Backbutton from '../components/Backbutton.vue';
 import { useToast } from 'vue-toastification';
+import API_BASE_URL from './../api'
 
 
 const  route = useRoute()
@@ -23,7 +24,7 @@ const toast = useToast()
 const deleteJob = async ()  => {
   try {
 
-    await axios.delete(import.meta.env.VITE_API_BASE_URL + '/api/jobs/' + jobId);
+    await axios.delete(API_BASE_URL + '/api/jobs/' + jobId);
     toast.success('Job deleted sucessfully');
     router.push('/jobs')
     
@@ -39,7 +40,7 @@ const editJob = async () => {
 
 onMounted(async () => {
     try {
-        const response =await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/jobs/${jobId}`);
+        const response =await axios.get(`${API_BASE_URL}/api/jobs/${jobId}`);
 
 
             state.job = response.data;

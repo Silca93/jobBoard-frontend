@@ -3,6 +3,7 @@ import { defineProps, computed, ref } from 'vue';
 import { RouterLink } from 'vue-router';
 
 
+
 const props = defineProps({
   job: Object
 })
@@ -36,7 +37,20 @@ const toggleFullDesc = () => {
                 <div>
                   {{truncatedDesc}}
                 </div>
-                <button class="text-orange-400 font-semibold" @click="toggleFullDesc">{{showFullDesc? 'Show less' : 'Show more'}}</button>
+                <div v-if="showFullDesc" class="flex">
+                    <button class="flex w-auto h-auto justify-center items-center gap-1" @click="toggleFullDesc">
+                      <span class="text-orange-400 font-semibold" >Show less</span>
+                      <span class="pi pi-angle-up"></span>
+                    </button>
+                </div>
+                <div v-else class="flex">
+                  <button class="flex w-auto h-auto justify-center items-center gap-1" @click="toggleFullDesc">
+                      <span class="text-orange-400 font-semibold" >Show more</span>
+                      <span class="pi pi-angle-down"></span>
+                    </button>
+                </div>
+
+
               </div>
         
               <h3 class="text-green-500 mb-2">{{ job.salary }} /Year</h3>

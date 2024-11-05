@@ -5,6 +5,7 @@ import axios from 'axios';
 import router from './../router'
 import { useRoute } from 'vue-router';
 import { useToast } from 'vue-toastification';
+import API_BASE_URL from './../api'
 
 
 const form = reactive({
@@ -60,8 +61,8 @@ const handleSubmit = async () => {
   }
 
   try {
-    const response = await axios.put(import.meta.env.VITE_API_BASE_URL + '/api/jobs/' + jobId, updatedJob)
-    router.push(`${import.meta.env.VITE_API_BASE_URL}/api/jobs/${jobId}`)
+    const response = await axios.put(API_BASE_URL + '/api/jobs/' + jobId, updatedJob)
+    router.push(`/jobs/${jobId}`)
     toast.success('Job updated successfully')
   } catch (error) {
     console.error("error fetching data", error);
@@ -71,7 +72,7 @@ const handleSubmit = async () => {
 
 onMounted(async () => {
   try {
-    const response = await axios.get(import.meta.env.VITE_API_BASE_URL + '/api/jobs/' + jobId)
+    const response = await axios.get(API_BASE_URL + '/api/jobs/' + jobId)
     state.job = response.data
 
     form.type = state.job.type
