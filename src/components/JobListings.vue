@@ -21,6 +21,9 @@ const state = reactive({
     isLoading: true
 })
 
+
+console.log('Using API base URL:', API_BASE_URL);
+
 onMounted(async () => {
     try {
         const response = await axios.get(`${API_BASE_URL}/jobs`)
