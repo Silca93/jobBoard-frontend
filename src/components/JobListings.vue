@@ -3,6 +3,7 @@
 import { ref, computed, onMounted, reactive } from 'vue';
 import JobListing from './JobListing.vue';
 import { defineProps} from 'vue';
+import { RouterLink } from 'vue-router';
 import axios from 'axios';
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
 import API_BASE_URL from './../api'
@@ -59,11 +60,11 @@ onMounted(async () => {
     </section>
 
     <section v-if="showButton" class="m-auto max-w-lg my-10 px-6">
-      <a
-        href="/jobs"
-        class="block bg-black text-white text-center py-4 px-6 rounded-xl hover:bg-gray-700"
-        >View All Jobs</a
-      >
+        <RouterLink
+            to="/jobs"
+            class="block bg-black text-white text-center py-4 px-6 rounded-xl hover:bg-gray-700"
+            >View All Jobs
+        </RouterLink>
     </section>
   
   
