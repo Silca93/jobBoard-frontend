@@ -50,6 +50,7 @@ onMounted(async () => {
             </h2>
             <div v-if="state.isLoading" class="text-center text-gray py-6">
                 <PulseLoader/> 
+                <p class="font-semibold">This may take up to 90 seconds if the server was asleep..</p>
             </div>
             <div v-else class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <JobListing v-for="job in state.jobs.slice(0, limit || state.jobs.length)" :key="job.id" :job="job"/>
