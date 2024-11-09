@@ -32,18 +32,17 @@ const handleSubmit = async () => {
         description: form.description,
         salary: form.salary,
         location: form.location,
-        company: {
-            name: form.company.name ,
-            description: form.company.description ,
-            contactEmail: form.company.contactEmail,
-            contactPhone: form.company.contactPhone
-        }
+        company_name: form.company.name,
+        company_description: form.company.description,
+        contact_email: form.company.contactEmail,
+        contact_phone: form.company.contactPhone
+            
 
     }
 
     try {
         const response = await axios.post(API_BASE_URL + '/api/jobs/', newJob)
-        router.push(`/jobs/${response.data.id}`)
+        router.push(`/jobs`)
         toast.success('Job added successfully')
        
 
@@ -88,7 +87,7 @@ const handleSubmit = async () => {
               >
               <input
                 type="text"
-                v-model="form.name"
+                v-model="form.title"
                 id="name"
                 name="name"
                 class="border rounded w-full py-2 px-3 mb-2"
